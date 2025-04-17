@@ -67,7 +67,7 @@ const SingleRestaurant = () => {
                                                 src={assets.remove_icon_red}
                                                 alt="Remove from cart"
                                             />
-                                            <p className="text-sm font-semibold">{cartItems[item._id]}</p> {/* Display the current quantity */}
+                                            <p className="text-sm font-semibold">{cartItems[item._id]}</p>
                                             <img
                                                 className="w-6 cursor-pointer"
                                                 onClick={() => addToCart(item._id)}

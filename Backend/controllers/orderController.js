@@ -1,7 +1,6 @@
 import orderModel from "../models/orderModel.js";
 import userModel from '../models/userModel.js';
 
-//placing user order for frontend
 const placeOrder = async (req,res) => {
 
     const frontend_url = "http://localhost:5173"
@@ -24,7 +23,6 @@ const placeOrder = async (req,res) => {
     }
 }
 
-//orders for user
 const userOrders = async (req,res) => {
     try {
         const orders = await orderModel.find({userId:req.userId});
@@ -35,7 +33,6 @@ const userOrders = async (req,res) => {
     }
 }
 
-//orders for restaurant
 const restaurantOrders = async (req,res) => {
     try {
         const orders = await orderModel.find({restaurantId:req.userId});
@@ -46,7 +43,6 @@ const restaurantOrders = async (req,res) => {
     }
 }
 
-//update status
 const updateOrderStatus = async (req, res) => {
     try {
       await orderModel.findByIdAndUpdate(req.params.orderId, {

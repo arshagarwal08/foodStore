@@ -1,6 +1,5 @@
 import React from 'react'
 import Home from './Home'
-import Admin from '../admin/admin'
 import Cart from './Cart'
 import PlaceOrder from './PlaceOrder'
 import Menu from './Menu'
@@ -24,7 +23,6 @@ const UserLayout = () => {
       <Navbar />
       <Routes>
         <Route path='/' element={<Home/>} />
-        <Route path='/admin' element={<Admin/>} />
         <Route path='/cart' element={<Cart/>} />
         <Route path='/order' element={<PlaceOrder/>} />
         <Route path='/menu' element={<Menu/>} />

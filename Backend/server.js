@@ -8,7 +8,7 @@ import cartRouter from './routes/cartRoute.js'
 import orderRouter from './routes/orderRoute.js'
 import restaurantRouter from './routes/restaurantRoute.js'
 
-//app config
+
 dotenv.config()
 const app = express()
 const port = 4000
@@ -26,10 +26,6 @@ app.use('/api/user',userRouter)
 app.use('/api/cart',cartRouter)
 app.use('/api/order',orderRouter)
 app.use('/api/restaurant',restaurantRouter)
-
-app.get('/',(req,res)=>{
-    res.send("working")
-})
 
 app.listen(port,()=>{
     console.log(`Server running on ${port}`)

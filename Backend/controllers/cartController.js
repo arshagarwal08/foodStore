@@ -1,6 +1,5 @@
 import userModel from '../models/userModel.js'
 
-// Add to cart
 const addToCart = async (req, res) => {
     try {
         let userData = await userModel.findById(req.body.userId);
@@ -8,7 +7,7 @@ const addToCart = async (req, res) => {
             return res.status(404).json({ success: false, message: "User not found" });
         }
 
-        let cartData = userData.cartData || {}; // If cartData is not initialized, use an empty object
+        let cartData = userData.cartData || {};
         if (!cartData[req.body.itemID]) {
             cartData[req.body.itemID] = 1;
         } else {
@@ -23,7 +22,6 @@ const addToCart = async (req, res) => {
     }
 }
 
-// Remove from cart
 const removeFromCart = async (req, res) => {
     try {
         let userData = await userModel.findById(req.body.userId);
@@ -31,7 +29,7 @@ const removeFromCart = async (req, res) => {
             return res.status(404).json({ success: false, message: "User not found" });
         }
 
-        let cartData = userData.cartData || {}; // If cartData is not initialized, use an empty object
+        let cartData = userData.cartData || {};
         if (cartData[req.body.itemID] > 0) {
             cartData[req.body.itemID] -= 1;
         }
@@ -44,7 +42,6 @@ const removeFromCart = async (req, res) => {
     }
 }
 
-// Fetch cart data
 const getCart = async (req, res) => {
     try {
         let userData = await userModel.findById(req.body.userId);
@@ -52,7 +49,7 @@ const getCart = async (req, res) => {
             return res.status(404).json({ success: false, message: "User not found" });
         }
 
-        let cartData = userData.cartData || {}; // If cartData is not initialized, use an empty object
+        let cartData = userData.cartData || {};
         res.json({ success: true, cartData });
     } catch (error) {
         console.log(error);

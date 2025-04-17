@@ -43,13 +43,13 @@ const StoreContextProvider = (props) => {
     
 
     const addToCart = async (itemID) => {
-        const item = food_list.find((foodItem) => foodItem._id === itemID); // Find the item by its ID
-        if (!item) return; // If the item doesn't exist, exit early
+        const item = food_list.find((foodItem) => foodItem._id === itemID);
+        if (!item) return;
         
-        const itemRestaurantId = item.restaurantId; // Access the restaurantId from the item
+        const itemRestaurantId = item.restaurantId;
         
         if (!restaurantId || Object.keys(cartItems).length === 0) {
-            setRestaurantId(itemRestaurantId); // Set the restaurantId from the item
+            setRestaurantId(itemRestaurantId);
         }
     
         if (restaurantId && restaurantId !== itemRestaurantId) {
@@ -59,10 +59,9 @@ const StoreContextProvider = (props) => {
     
             if (!confirmClear) return;
     
-            setCartItems({ [itemID]: 1 }); // Clear the cart and add the new item
-            setRestaurantId(itemRestaurantId); // Update the restaurantId to the new one
+            setCartItems({ [itemID]: 1 });
+            setRestaurantId(itemRestaurantId);
         } else {
-            // Add or update the item in the cart
             if (!cartItems[itemID]) {
                 setCartItems((prev) => ({ ...prev, [itemID]: 1 }));
             } else {

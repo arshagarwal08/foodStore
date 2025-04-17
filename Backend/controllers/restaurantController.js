@@ -35,13 +35,11 @@ const restaurantSignup = async (req,res) => {
     const {name,ownerName,email,password,address,phone} = req.body;
 
     try {
-        //checking if already present
         const exists = await restaurantModel.findOne({email})
         if(exists){
             return res.json({success:false,message:"Restaurant already exists"})
         }
 
-        //check is email and password are in correct format
         if(!validator.isEmail(email)){
             return res.json({success:false,message:"Enter a valid email"})
         }
@@ -49,7 +47,6 @@ const restaurantSignup = async (req,res) => {
             return res.json({success:false,message:"Enter a strong password"})
         }
 
-        //hash password
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password,salt);
 

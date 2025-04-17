@@ -3,7 +3,6 @@ import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 import validator from 'validator'
 
-//login
 const loginUser = async (req,res) => {
     const {email,password}= req.body;
     try {
@@ -31,18 +30,15 @@ const createToken = (id,role) => {
     return jwt.sign({id,role},process.env.JWT_SECRET)
 }
 
-//register
 const registerUser = async (req,res) => {
     const {name,password,email} = req.body;
 
     try {
-        //checking is already exists
         const exists = await userModel.findOne({email})
         if(exists){
             return res.json({success:false,message:"User already exists"})
         }
 
-        //validating email format and strong password 
         if(!validator.isEmail(email)){
             return res.json({success:false,message:"Enter a valid email"});
         }
@@ -50,7 +46,6 @@ const registerUser = async (req,res) => {
             return res.json({success:false,message:"Enter a strong password"})
         }
 
-        //hashing password
         const salt = await bcrypt.genSalt(10)
         const hashedPassword = await bcrypt.hash(password,salt)
 

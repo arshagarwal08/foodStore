@@ -53,10 +53,8 @@ const handleStatusChange = async (orderId, newStatus) => {
             <div key={index} className="bg-white rounded-2xl shadow-md border p-5 transition hover:shadow-lg space-y-4">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
 
-                {/* Icon */}
                 <img src={assets.parcel_icon} alt="parcel" className="w-12 h-12" />
 
-                {/* Order Details */}
                 <div className="flex-1">
                   <p className="text-gray-800 font-medium mb-1">Order ID: {order._id}</p>
                   <p className="text-gray-700 text-sm">
@@ -69,13 +67,9 @@ const handleStatusChange = async (orderId, newStatus) => {
                   </p>
                 </div>
 
-                {/* Price */}
-
                 <p className="text-gray-800 px-5 font-semibold">₹{order.amount}</p>
                 <p className="text-sm text-gray-500 px-5">Items: {order.items.length}</p>
 
-
-                {/* Status Dropdown */}
                 <div className="min-w-[200px] flex flex-col gap-2 items-start justify-center">
                   <select
                     value={order.status}
@@ -91,7 +85,6 @@ const handleStatusChange = async (orderId, newStatus) => {
 
               </div>
 
-              {/* Address */}
               <div className="text-sm text-gray-700 pl-16 md:pl-20">
                 <p className="font-medium">{order.address.firstName} {order.address.lastName}</p>
                 <p>{order.address.street}, {order.address.city}</p>
